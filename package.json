@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@netlify/functions": "^0.7.2",
+    "cheerio": "^1.0.0-rc.9",
+    "isomorphic-unfetch": "^3.1.0",
+    "regenerator-runtime": "^0.13.7",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.9"
+  }
+}

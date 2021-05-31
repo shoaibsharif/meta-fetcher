@@ -5,7 +5,7 @@ import * as cheerio from "cheerio";
 export const handler: Handler = async (event, context) => {
   //   console.log("queryStringParameters", event.queryStringParameters);
   const headers = {
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
     Vary: "Origin",
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",

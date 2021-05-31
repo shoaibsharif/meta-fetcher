@@ -5,14 +5,15 @@ import * as cheerio from "cheerio";
 export const handler: Handler = async (event, context) => {
   //   console.log("queryStringParameters", event.queryStringParameters);
   const headers = {
-    "Access-Control-Allow-Origin": "http://localhost:3000",
-    Vary: "Origin",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
-    "Content-Type": "application/json", //optional
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Max-Age": "8640",
+      "Origin, X-Requested-With, Content-Type, Accept",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Methods": "*",
+    "Access-Control-Max-Age": "2592000",
+    "Access-Control-Allow-Credentials": "true",
   };
+
   try {
     if (event.httpMethod === "OPTIONS") {
       return { statusCode: "204", headers };

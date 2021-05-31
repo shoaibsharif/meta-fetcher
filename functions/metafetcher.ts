@@ -9,14 +9,14 @@ export const handler: Handler = async (event, context) => {
     "Access-Control-Allow-Headers":
       "Origin, X-Requested-With, Content-Type, Accept",
     "Content-Type": "application/json",
-    "Access-Control-Allow-Methods": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
     "Access-Control-Max-Age": "2592000",
     "Access-Control-Allow-Credentials": "true",
   };
 
   try {
     if (event.httpMethod === "OPTIONS") {
-      return { statusCode: "204", headers };
+      return { statusCode: 200, headers };
     }
     if (event.httpMethod === "GET") {
       let result;

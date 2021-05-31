@@ -19,7 +19,7 @@ export const handler: Handler = async (event, context) => {
       return { statusCode: 200, headers };
     }
     if (event.httpMethod === "GET") {
-      let result;
+      let meta;
       if (event.queryStringParameters?.url) {
         const res = await fetch(event.queryStringParameters?.url);
         const content = await res.text();
@@ -30,7 +30,7 @@ export const handler: Handler = async (event, context) => {
           .find('meta[name="description"]')
           .attr("content");
         const image = head.find('meta[property="og:image"]').attr("content");
-        result = { title, description, image: { url: image } };
+        meta = { title, description, image: { url: image } };
       } else {
         return {
           statusCode: 404,
@@ -44,7 +44,7 @@ export const handler: Handler = async (event, context) => {
         statusCode: 200,
         body: JSON.stringify({
           success: 1,
-          result,
+          meta,
         }),
         headers,
       };

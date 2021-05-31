@@ -4,9 +4,20 @@ import * as cheerio from "cheerio";
 
 export const handler: Handler = async (event, context) => {
   //   console.log("queryStringParameters", event.queryStringParameters);
-
-  if (event.httpMethod === "GET") {
-    try {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    Vary: "Origin",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
+    "Content-Type": "application/json", //optional
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Max-Age": "8640",
+  };
+  try {
+    if (event.httpMethod === "OPTIONS") {
+      return { statusCode: "204", headers };
+    }
+    if (event.httpMethod === "GET") {
       let result;
       if (event.queryStringParameters?.url) {
         const res = await fetch(event.queryStringParameters?.url);
@@ -34,31 +45,23 @@ export const handler: Handler = async (event, context) => {
           success: 1,
           result,
         }),
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Vary: "Origin",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
-          "Content-Type": "application/json", //optional
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-          "Access-Control-Max-Age": "8640",
-        },
+        headers,
       };
-    } catch (error) {
+    } else {
       return {
         statusCode: 400,
         body: JSON.stringify({
           success: 0,
-          message: "Only absolute URLs are supported via query parameters url",
+          message: "Only GET method is allowed",
         }),
       };
     }
-  } else {
+  } catch (error) {
     return {
       statusCode: 400,
       body: JSON.stringify({
         success: 0,
-        message: "Only GET method is allowed",
+        message: "Only absolute URLs are supported via query parameters url",
       }),
     };
   }

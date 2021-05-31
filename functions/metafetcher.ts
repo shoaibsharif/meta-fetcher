@@ -34,6 +34,11 @@ export const handler: Handler = async (event, context) => {
           success: 1,
           result,
         }),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Methods": "GET, POST, OPTION",
+        },
       };
     } catch (error) {
       return {

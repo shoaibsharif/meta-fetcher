@@ -1,2 +1,6 @@
 [build]
-    functions = "functions"
+  functions = "functions"
+[[redirects]]
+  from = "/meta-fetcher"
+  to = ".netlify/functions/metafetcher"
+  status = 200

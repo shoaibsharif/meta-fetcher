@@ -14541,6 +14541,7 @@ var handler = async (event, context) => {
       return {
         statusCode: 400,
         body: JSON.stringify({
+          success: 0,
           message: "Only absolute URLs are supported via query parameters url"
         })
       };
@@ -14548,7 +14549,10 @@ var handler = async (event, context) => {
   } else {
     return {
       statusCode: 400,
-      body: "Only GET method is allowed"
+      body: JSON.stringify({
+        success: 0,
+        message: "Only GET method is allowed"
+      })
     };
   }
 };

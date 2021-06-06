@@ -2,7 +2,7 @@
   functions = "functions"
 [[redirects]]
   from = "/*"
-  to = ".netlify/functions/:splat"
+  to = ".netlify/functions/*"
   status = 200
 [[headers]]
   for = "/*"

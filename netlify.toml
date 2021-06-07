@@ -2,9 +2,9 @@
   functions = "functions/"
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/*"
   status = 200
 [[headers]]
   for = "/*"
   [headers.values]
-    Access-Control-Allow-Origin = "http://techdiary.dev"
+    Access-Control-Allow-Origin = "*"

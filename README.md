@@ -1,7 +1,7 @@
 
 # Meta fetcher
 
-A serverless function to fetch the meta data from a url. Currently it has been formatted for [editorjs/link](https://github.com/editor-js/link) where you can get  'title', 'image', and 'description' meta data from <head> 
+A serverless function to fetch the meta data from a url. Currently it has been formatted for [editorjs/link](https://github.com/editor-js/link) where you can get  'title', 'image', and 'description' meta data from `<head></head>`
 
 ```json
 {
